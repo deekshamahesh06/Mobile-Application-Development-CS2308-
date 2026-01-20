@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping App</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      width: 260px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .bag { background: #ff3f6c; color: #fff; }
+    .wish { border: 1px solid #ccc; background: #fff; }
+
+    .qty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .qty button {
+      width: 35px;
+      font-size: 18px;
+    }
+
+    span { margin: 0 15px; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h3>Product</h3>
+
+  <button class="bag" onclick="bag++">Add to Bag</button>
+  <button class="wish" onclick="wishlist++">Move to Wishlist</button>
+
+  <div class="qty">
+    <button onclick="bag > 0 && bag--">−</button>
+    <span id="bag">0</span>
+    <button onclick="bag++">+</button>
+  </div>
+
+  <p>Wishlist Items: <span id="wish">0</span></p>
+</div>
+
+<script>
+  let bag = 0, wishlist = 0;
+
+  setInterval(() => {
+    bag < 0 && (bag = 0);
+    document.getElementById("bag").innerText = bag;
+    document.getElementById("wish").innerText = wishlist;
+  }, 100);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<<!DOCTYPE html>
+<html>
+<head>
+<title>Metro Ticket</title>
+<style>
+  body{font-family:Arial;background:#eef2ff;display:flex;justify-content:center;align-items:center;height:100vh}
+  .box{background:#fff;padding:20px;width:280px;border-radius:10px;box-shadow:0 4px 10px #0002;text-align:center}
+  input,select,button{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:6px}
+  button{background:#2a5298;color:#fff;border:none;cursor:pointer;font-weight:bold}
+  h3{margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h2>🚇 Metro Ticket</h2>
+
+  <input id="age" type="number" placeholder="Enter age">
+  <input id="price" type="number" value="50" placeholder="Base price">
+  
+  <select id="gender">
+    <option value="">Select gender</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+  </select>
+
+  <button onclick="calc()">Calculate</button>
+
+  <h3 id="out">Result: ₹0</h3>
+</div>
+
+<script>
+function calc(){
+  let a=+age.value, p=+price.value, g=gender.value, d=0;
+
+  if(a<0||p<=0||!g) return out.innerHTML="Enter valid details!";
+
+  if(a<5) d=100;
+  else if(a<=8) d=50;
+  if(g=="female") d=Math.max(d,50);
+  if(a>65) d=Math.max(d,70);
+
+  out.innerHTML="Result: ₹"+(p-(p*d/100)).toFixed(2)+" ("+d+"% off)";
+}
+</script>
+
+</body>
+</html>
